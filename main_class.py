@@ -64,8 +64,10 @@ def main():
             animals_list.show_count_animals()
         if choice == 4:
             name = input('Введите имя животного: ')
-            birth_date = input('Введите дату рождения: ')
-            if birth_date == '':
+            birth_date = input('Введите дату рождения yyyy-mm-dd: ')
+            try:
+                datetime.datetime.strptime(birth_date, '%Y-%m-%d')
+            except ValueError:
                 birth_date = f'{datetime.date.today().year}-{datetime.date.today().month}-{datetime.date.today().day}'
             for i, type_an in enumerate(type_animals):
                 print(f'{i + 1}) {type_an}')
